@@ -9,8 +9,12 @@
 	font-size: 5vh;
 	padding: 3vh;
 
-	background: $color--primary;
+	background: $w;
 	color: $w;
+}
+
+ul {
+	list-style: none;
 }
 
 .content{

@@ -29,17 +29,17 @@
 
 // START Editing Project Variables.
 // Project related.
-var project                 = 'WPGulpTheme'; // Project Name.
-var projectURL              = 'wpgulp.dev'; // Project URL. Could be something like localhost:8888.
+var project                 = 'isa_version_one'; // Project Name.
+var projectURL              = 'localhost:8888'; // Project URL. Could be something like localhost:8888.
 var productURL              = './'; // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
 
 // Translation related.
-var text_domain             = 'WPGULP'; // Your textdomain here.
-var destFile                = 'WPGULP.pot'; // Name of the transalation file.
-var packageName             = 'WPGULP'; // Package name.
-var bugReport               = 'https://AhmadAwais.com/contact/'; // Where can users report bugs.
-var lastTranslator          = 'Ahmad Awais <your_email@email.com>'; // Last translator Email ID.
-var team                    = 'WPTie <your_email@email.com>'; // Team's Email ID.
+var text_domain             = 'ISA'; // Your textdomain here.
+var destFile                = 'ISA.pot'; // Name of the transalation file.
+var packageName             = 'ISA'; // Package name.
+var bugReport               = 'https://manchesteroutsourcing.co.uk'; // Where can users report bugs.
+var lastTranslator          = 'Alastair <alastair.shone@manchesteroutsourcing.co.uk>'; // Last translator Email ID.
+var team                    = 'Marketing <marketing.team@manchesteroutsourcing.co.uk>'; // Team's Email ID.
 var translatePath           = './languages' // Where to save the translation files.
 
 // Style related.

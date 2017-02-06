@@ -22,6 +22,7 @@ html {
 
 body {
     font: 400 11px/1.4 sans-serif;
+    font-family: $f1;
     color: $c2;
     margin: 0;
     background: $w !important;
@@ -79,4 +80,11 @@ ol, ul {
 }
 select{
     width: 100%;
+}
+
+ul.list {
+    list-style: initial;
+    font-size: $m;
+    margin-left: 30px;
+    width: 90%;
 }

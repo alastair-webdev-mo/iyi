@@ -93,9 +93,12 @@ function aa_scripts()
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
 
-    	wp_enqueue_script('jquery'); // Enqueue it!
-        //wp_deregister_script('jquery'); // Deregister WordPress jQuery
-        //wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', array(), '1.11.2');
+    	wp_enqueue_script('jquery');
+        wp_deregister_script('jquery');
+        wp_register_script('jquery', 'https://code.jquery.com/jquery-3.1.1.min.js', array(), '1.11.2', true);
+
+        wp_register_script('validate', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js', array(), '1.16.0', true); // Custom scripts
+        wp_enqueue_script('validate'); // Enqueue it!
 
 
         /**
@@ -108,11 +111,17 @@ function aa_scripts()
          *     Order is important
          *
          */
-        wp_register_script('aa_vendorsJs', get_template_directory_uri() . '/assets/js/vendors.min.js'); // Custom scripts
-        wp_enqueue_script('aa_vendorsJs'); // Enqueue it!
 
-        wp_register_script('aa_customJs', get_template_directory_uri() . '/assets/js/custom.min.js'); // Custom scripts
+        wp_register_script('aa_skrollr', get_template_directory_uri() . '/assets/js/skrollr.min.js', array(), '1.11.2', true); // Custom scripts
+        wp_enqueue_script('aa_skrollr'); // Enqueue it!
+
+        wp_register_script('aa_unsliderjs', get_template_directory_uri() . '/assets/js/unslider-min.js', array(), '1.11.2', true); // Custom scripts
+        wp_enqueue_script('aa_unsliderjs'); // Enqueue it!
+
+        wp_register_script('aa_customJs', get_template_directory_uri() . '/assets/js/custom.min.js', array(), '1.11.2', true); // Custom scripts
         wp_enqueue_script('aa_customJs'); // Enqueue it!
+
+
 
     }
 
@@ -139,6 +148,9 @@ function aa_styles()
     wp_register_style('aa_style', get_template_directory_uri() . '/style.min.css', array(), '1.0', 'all');
     wp_enqueue_style('aa_style'); // Enqueue it!
 
+    wp_register_style('aa_unslider', get_template_directory_uri() . '/unslider.css', array(), '1.0', 'all');
+    wp_enqueue_style('aa_unslider'); // Enqueue it!
+
 }
 
 /**
@@ -154,3 +166,67 @@ function aa_enqueue_comments_reply() {
         wp_enqueue_script( 'comment-reply' );
     }
 }
+
+add_action( 'widgets_init', 'theme_slug_widgets_init' );
+function theme_slug_widgets_init() {
+    register_sidebar( array(
+        'name' => __( '3 Column Widget', 'three-col-widget' ),
+        'id' => 'three-col-widget',
+        'description' => __( '3 Column Widget', 'three-col-widget' ),
+        'before_widget' => '<li id="%1$s" class="three-col-widget"><div class="widget-wrapper">',
+        'after_widget'  => '<div class="expand"></div></div></li>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'CTA', 'cta' ),
+        'id' => 'cta',
+        'description' => __( 'CTA', 'cta' ),
+        'before_widget' => '<li id="%1$s" class="action">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="cta-title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Contact', 'contact' ),
+        'id' => 'contact',
+        'description' => __( 'Get in Touch Widget', 'contact' ),
+        'before_widget' => '<div class="side-item contact"><header class="apply-header">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3></header>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Investment Report', 'report' ),
+        'id' => 'report',
+        'description' => __( 'Investment Report Widget', 'report' ),
+        'before_widget' => '<div class="side-item report"><header class="apply-header">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3></header>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Get Started', 'apply' ),
+        'id' => 'apply',
+        'description' => __( 'Get Started Widget', 'apply' ),
+        'before_widget' => '<div class="side-item apply"><header class="apply-header">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3></header>',
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Social Media', 'social' ),
+        'id' => 'social',
+        'description' => __( 'Social Media Stream Widget', 'social' ),
+        'before_widget' => '<div class="side-item social"><header class="apply-header">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3></header>',
+    ) );
+}
+
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
