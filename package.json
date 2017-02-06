@@ -5,7 +5,7 @@
   "license": "GPL-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmadawais/WPGulp.git"
+    "url": "git+https://github.com/manchesteroutsourcing/iyi.git"
   },
   "dependencies": {
     "browser-sync": "^2.18.7",
